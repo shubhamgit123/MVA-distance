@@ -1,0 +1,15 @@
+```{r}
+library(psych)
+library(readxl)
+mva <- read_excel("C:/Users/Student/Downloads/social_media_cleaned.xlsx")
+mva <- mva[-1]
+
+
+#correlation matrix / class avg
+scale <- scale(mva)
+
+classcov <- cor(mva)
+classmean <- colMeans(mva)
+
+mvascale <- mahalanobis(mva, classmean, classcov)
+print(mvascale[1])
